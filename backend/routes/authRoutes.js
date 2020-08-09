@@ -16,12 +16,13 @@ router.get(
     }
 );
 
-router.get("/api/current_user", (req, res) => {
+router.get("/api/user", (req, res) => {
     res.send(req.user);
 });
 
 router.get("/api/logout", (req, res) => {
     req.logout();
+    req.session = null;
     res.redirect("/");
 });
 
