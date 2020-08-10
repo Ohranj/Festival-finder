@@ -27,10 +27,22 @@ body {
     display: flex;
     margin-left: auto;
 }
-.item > .googleBtn {
-    background-color: #4286f5;
+.item > .googleBtn,
+.item > .googleBtn:hover,
+.item > .googleBtn:focus {
     color: #ffffff;
     margin: 0 5px;
+}
+
+.item > .googleBtnSignOut,
+.item > .googleBtnSignOut:hover,
+.item > .googleBtnSignOut:focus {
+    background-color: #d94831;
+}
+.item > .googleBtnSignIn,
+.item > .googleBtnSignIn:hover,
+.item > .googleBtnSignIn:focus {
+    background-color: #4286f5;
 }
 .fa-google {
     margin-right: 5px;

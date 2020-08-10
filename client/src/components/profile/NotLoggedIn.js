@@ -6,7 +6,7 @@ const NotLoggedIn = () => {
             <div className="twelve wide column centered">
                 You must
                 <a href="/auth/google" className="item">
-                    <button className="ui button googleBtn">
+                    <button className="ui button googleBtn googleBtnSignIn">
                         <i className="fab fa-google material-icons right"></i>
                         Sign in with Google
                     </button>

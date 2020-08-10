@@ -7,7 +7,7 @@ class Header extends React.Component {
     signIn() {
         return (
             <a href="/auth/google" className="item">
-                <button className="ui button googleBtn">
+                <button className="ui button googleBtn googleBtnSignIn">
                     <i className="fab fa-google material-icons right"></i>
                     Sign in with Google
                 </button>
@@ -18,7 +18,7 @@ class Header extends React.Component {
     signOut() {
         return (
             <a href="/api/logout" className="item">
-                <button className="ui button googleBtn">
+                <button className="ui button googleBtn googleBtnSignOut">
                     <i className="fab fa-google material-icons right"></i>
                     Sign out of Google
                 </button>
@@ -27,7 +27,6 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log(this.props.user);
         return (
             <div className="ui segment header">
                 <div className="ui secondary menu">

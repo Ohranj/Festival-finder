@@ -6,6 +6,7 @@ const userSchema = new Schema({
     googleUsername: String,
     googleProfileImg: String,
     googleEmail: String,
+    name: String,
     festivals: [],
 });
 

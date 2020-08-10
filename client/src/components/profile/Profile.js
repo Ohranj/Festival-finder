@@ -29,7 +29,7 @@ class Profile extends React.Component {
         } else if (!this.props.user.userID) {
             return <NotLoggedIn />;
         } else {
-            return <LoggedIn user={this.props.user.username} />;
+            return <LoggedIn user={this.props.user.name} />;
         }
     }
 }

@@ -31,6 +31,7 @@ passport.use(
                         googleUsername: profile.displayName,
                         googleProfileImg: profile._json.picture,
                         googleEmail: profile._json.email,
+                        name: profile.name.givenName,
                     })
                         .save()
                         .then((user) => {

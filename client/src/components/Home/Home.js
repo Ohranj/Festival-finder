@@ -1,8 +1,14 @@
 import React from "react";
 
+import GoogleMap from "./GoogleMap";
+
 class Home extends React.Component {
     render() {
-        return <div>Home</div>;
+        return (
+            <div>
+                <GoogleMap />
+            </div>
+        );
     }
 }
 

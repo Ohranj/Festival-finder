@@ -2,6 +2,7 @@ const initialState = {
     userID: null,
     username: null,
     userImg: null,
+    name: null,
 };
 
 export default (state = initialState, action) => {
@@ -12,6 +13,7 @@ export default (state = initialState, action) => {
                 userID: action.userID,
                 username: action.username,
                 userImg: action.userImg,
+                name: action.name,
             };
         default:
             return state;
