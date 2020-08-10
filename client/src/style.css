@@ -1,5 +1,6 @@
 body {
     background-color: #eceff1;
+    font-size: 1.5rem;
 }
 .rootContainer {
     min-height: 100%;
@@ -11,13 +12,25 @@ body {
     height: 12vh;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin: 0;
-    padding-right: 10vw !important;
-    border: 1px solid black;
+    padding: 0 10vw !important;
+    width: 100%;
 }
 .header > .menu {
-    float: right;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.headerName {
+    color: #000000;
+}
+.rightHeader {
+    display: flex;
+    margin-left: auto;
+}
+.item > .googleBtn {
+    background-color: #4286f5;
+    color: #ffffff;
+    margin: 0 5px;
 }
 .fa-google {
     margin-right: 5px;

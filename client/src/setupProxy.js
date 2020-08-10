@@ -11,4 +11,9 @@ module.exports = function (app) {
             target: "http://localhost:8080",
         })
     );
+    app.use(
+        proxy("/api/logout", {
+            target: "http://localhost:8080",
+        })
+    );
 };

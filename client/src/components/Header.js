@@ -1,25 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { storeUser } from "../actions/index";
 
-const Header = () => {
-    return (
-        <div className="ui segment header">
-            <div className="ui secondary menu">
-                <a href="/auth/google" className="item">
-                    <button
-                        className="ui button"
-                        style={{ backgroundColor: "#4286f5", color: "#ffffff" }}
-                    >
-                        <i className="fab fa-google material-icons right"></i>
-                        Sign in with Google
-                    </button>
-                </a>
-                <Link to="/profile" className="item">
-                    View profile
-                </Link>
+class Header extends React.Component {
+    signIn() {
+        return (
+            <a href="/auth/google" className="item">
+                <button className="ui button googleBtn">
+                    <i className="fab fa-google material-icons right"></i>
+                    Sign in with Google
+                </button>
+            </a>
+        );
+    }
+
+    signOut() {
+        return (
+            <a href="/api/logout" className="item">
+                <button className="ui button googleBtn">
+                    <i className="fab fa-google material-icons right"></i>
+                    Sign out of Google
+                </button>
+            </a>
+        );
+    }
+
+    render() {
+        console.log(this.props.user);
+        return (
+            <div className="ui segment header">
+                <div className="ui secondary menu">
+                    <div>
+                        <Link to="/">
+                            <h2 className="headerName">Festival Finder</h2>
+                        </Link>
+                    </div>
+                    <div className="rightHeader">
+                        {this.props.user.userID
+                            ? this.signOut()
+                            : this.signIn()}
+                        <Link to="/profile" className="item">
+                            <h3>View profile</h3>
+                        </Link>
+                    </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
 };
 
-export default Header;
+export default connect(mapStateToProps, { storeUser })(Header);

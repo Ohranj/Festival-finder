@@ -2,17 +2,18 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
-import Profile from "./Profile";
+import Home from "./Home/Home";
+import Profile from "./profile/Profile";
 
 class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <div className="rootContainer blue-grey lighten-5">
+                <div className="rootContainer">
                     <Header />
                     <Switch>
-                        <Route path="/" exact />
-                        <Route path="/profile" exact component={Profile} />
+                        <Route path="/" exact component={Home} />
+                        <Route path="/profile" component={Profile} />
                     </Switch>
                 </div>
             </BrowserRouter>
