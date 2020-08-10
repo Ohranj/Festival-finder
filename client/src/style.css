@@ -35,3 +35,7 @@ body {
 .fa-google {
     margin-right: 5px;
 }
+.noUserProfilePage {
+    height: 80vh;
+    text-align: center;
+}

@@ -3,6 +3,9 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { storeUser } from "../../actions/index";
 
+import NotLoggedIn from "./NotLoggedIn";
+import LoggedIn from "./LoggedIn";
+
 class Profile extends React.Component {
     state = {
         isAuthenticating: true,
@@ -24,30 +27,9 @@ class Profile extends React.Component {
         if (this.state.isAuthenticating) {
             return null;
         } else if (!this.props.user.userID) {
-            return (
-                <div
-                    className="ui grid middle aligned"
-                    style={{ height: "80vh" }}
-                >
-                    <div
-                        className="twelve wide column centered"
-                        style={{
-                            textAlign: "center",
-                        }}
-                    >
-                        You must
-                        <a href="/auth/google" className="item">
-                            <button className="ui button googleBtn">
-                                <i className="fab fa-google material-icons right"></i>
-                                Sign in with Google
-                            </button>
-                        </a>
-                        to view your profile
-                    </div>
-                </div>
-            );
+            return <NotLoggedIn />;
         } else {
-            return <div>{this.props.user.username}</div>;
+            return <LoggedIn user={this.props.user.username} />;
         }
     }
 }
