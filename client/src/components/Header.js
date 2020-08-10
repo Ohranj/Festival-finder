@@ -32,7 +32,7 @@ class Header extends React.Component {
                 <div className="ui secondary menu">
                     <div>
                         <Link to="/">
-                            <h2 className="headerName">Festival Finder</h2>
+                            <h2 className="headerName">News Finder</h2>
                         </Link>
                     </div>
                     <div className="rightHeader">
