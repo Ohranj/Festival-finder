@@ -1,6 +1,5 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
-import axios from "axios";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoiYWpkb3JyaW5ndG9uIiwiYSI6ImNrMnZwN2lmYzA2eHEzZG54ZzcyN3Rqb3MifQ.i6b1jeTgD1Gtijm-WJEAMg";
@@ -24,54 +23,18 @@ class GoogleMap extends React.Component {
                 longitude: lngLat.lng.toFixed(4),
                 latitude: lngLat.lat.toFixed(4),
             });
-            this.getCountry();
-        });
-    }
-
-    getCountry() {
-        axios({
-            method: "get",
-            url: "/geo",
-        }).then((res) => {
-            console.log(res);
+            map.flyTo({
+                center: [this.state.longitude, this.state.latitude],
+                speed: 0.2,
+                curve: 2.0,
+                zoom: 3.5,
+            });
+            this.props.getCountry(lngLat);
         });
     }
 
     render() {
-        return (
-            <div>
-                <div
-                    style={{
-                        display: "inline-block",
-                        position: "absolute",
-                        top: "18.5vh",
-                        left: "2.5vw",
-                        margin: "12px",
-                        backgroundColor: "#404040",
-                        color: "#ffffff",
-                        zIndex: "1",
-                        padding: "6px",
-                        fontWeight: "bold",
-                    }}
-                >
-                    <div>
-                        Longitude: {this.state.longitude} | Latitude:
-                        {this.state.latitude}
-                    </div>
-                </div>
-                <div
-                    ref="mapContainer"
-                    style={{
-                        position: "absolute",
-                        top: "20vh",
-                        right: "45vw",
-                        left: "2.5vw",
-                        bottom: "2.5vh",
-                        border: "2px solid black",
-                    }}
-                />
-            </div>
-        );
+        return <div ref="mapContainer" className="map"></div>;
     }
 }
 
