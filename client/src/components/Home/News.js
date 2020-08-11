@@ -17,9 +17,13 @@ class News extends React.Component {
                 countryCode: this.props.countryCode,
             },
         }).then(({ data }) => {
-            const articles = data.articles;
+            const firstPage = [];
+            const secondPage = [];
+            data.articles.forEach((article, index) => {
+                index < 10 ? firstPage.push(article) : secondPage.push(article);
+            });
             return this.setState({
-                articles,
+                articles: [firstPage, secondPage],
                 countrySelected: true,
             });
         });

@@ -79,8 +79,31 @@ body {
     flex-direction: column;
     text-align: center;
     background-color: #ffffff;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+}
+.items > .articleContainer {
+    min-height: 100px !important;
+    margin: 10px 10px 10px 0px !important;
+    border: 1px solid black !important;
+    padding: 5px 10px 5px 5px !important;
+    align-items: center !important;
 }
 .newsCountryHeader {
     height: 5vh;
     padding: 2vh 0 4vh 0;
+}
+.content > .articleHeading {
+    padding: 0 3vw !important;
+    font-size: 15px !important;
+    height: 4vh !important;
+    line-height: 15px !important;
+}
+.content > .articleDescription {
+    font-size: 12px !important;
+}
+.image > a > .articleImg {
+    height: 80px;
+    width: 150px;
 }
