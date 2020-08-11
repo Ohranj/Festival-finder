@@ -12,7 +12,10 @@ router.get("/geo", (req, res) => {
             process.env.geocodeKey
         }`,
     }).then(({ data }) => {
-        res.send(data.results[0].components.country);
+        res.json({
+            country: data.results[0].components.country,
+            countryCode: data.results[0].components.country_code,
+        });
     });
 });
 

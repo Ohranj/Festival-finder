@@ -7,6 +7,7 @@ import News from "./News";
 class Home extends React.Component {
     state = {
         country: "",
+        countryCode: "",
     };
 
     getCountry = ({ lng, lat }) => {
@@ -19,7 +20,8 @@ class Home extends React.Component {
             },
         }).then(({ data }) => {
             this.setState({
-                country: data,
+                country: data.country,
+                countryCode: data.countryCode,
             });
         });
     };
@@ -37,7 +39,10 @@ class Home extends React.Component {
                 <div className="mainHomePageContainer">
                     <GoogleMap getCountry={this.getCountry} />
                     <div className="displayNewsContainer">
-                        <News country={this.state.country} />
+                        <News
+                            country={this.state.country}
+                            countryCode={this.state.countryCode}
+                        />
                     </div>
                 </div>
             </div>
