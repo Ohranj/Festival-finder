@@ -1,10 +1,28 @@
 import React from "react";
 import axios from "axios";
 
+import RenderNews from "./RenderNews";
+
 class News extends React.Component {
+    state = {
+        articles: [],
+        countrySelected: false,
+    };
+
     getNews() {
-        //DO AXIOS FETCH TO BACKEND AND THEN FROM THEIR TO NEWS API
-        console.log(this.props.countryCode);
+        axios({
+            method: "get",
+            url: "/news",
+            params: {
+                countryCode: this.props.countryCode,
+            },
+        }).then(({ data }) => {
+            const articles = data.articles;
+            return this.setState({
+                articles,
+                countrySelected: true,
+            });
+        });
     }
 
     render() {
@@ -23,6 +41,10 @@ class News extends React.Component {
                         >
                             Get News
                         </button>
+                        <RenderNews
+                            articles={this.state.articles}
+                            countrySelected={this.state.countrySelected}
+                        />
                     </div>
                 )}
             </div>
