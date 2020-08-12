@@ -43,7 +43,7 @@ class News extends React.Component {
                             className="ui button orange"
                             onClick={() => this.getNews()}
                         >
-                            Get News
+                            Get Headlines
                         </button>
                         <RenderNews
                             articles={this.state.articles}

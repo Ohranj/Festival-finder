@@ -1,11 +1,12 @@
 import React from "react";
 
+import AddToLibrary from "./AddToLibrary";
+
 class RenderNews extends React.Component {
     state = {
         articlePageToRender: 0,
     };
     render() {
-        console.log(this.props);
         if (!this.props.countrySelected) {
             return null;
         } else if (this.props.articles[0].length === 0) {
@@ -17,13 +18,18 @@ class RenderNews extends React.Component {
             );
         }
         return (
-            <div class="ui items" style={{ padding: "0 10px" }}>
+            <div className="ui items articleParentContainer">
                 {this.props.articles[this.state.articlePageToRender].map(
                     (article, index) => {
                         return (
-                            <div key={index} class="item articleContainer">
-                                <div class="ui small image">
-                                    <a href={article.url}>
+                            <div key={index} className="item articleContainer">
+                                <AddToLibrary article={article} />
+                                <div className="ui small image">
+                                    <a
+                                        href={article.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
                                         <img
                                             className="articleImg"
                                             src={article.urlToImage}
@@ -31,11 +37,11 @@ class RenderNews extends React.Component {
                                         />
                                     </a>
                                 </div>
-                                <div class="content">
-                                    <div class="header articleHeading">
+                                <div className="content">
+                                    <div className="header articleHeading">
                                         {article.title}
                                     </div>
-                                    <div class="description articleDescription">
+                                    <div className="description articleDescription">
                                         <p>{article.description}</p>
                                     </div>
                                 </div>
@@ -43,6 +49,19 @@ class RenderNews extends React.Component {
                         );
                     }
                 )}
+                <button
+                    className="ui button basic orange"
+                    onClick={() =>
+                        this.setState({
+                            articlePageToRender:
+                                this.state.articlePageToRender === 0 ? 1 : 0,
+                        })
+                    }
+                >
+                    {this.state.articlePageToRender === 0
+                        ? "Next Page"
+                        : "Previous Page"}
+                </button>
             </div>
         );
     }
