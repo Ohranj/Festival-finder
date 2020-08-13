@@ -5,6 +5,7 @@ const cookieSession = require("cookie-session");
 const { authRoutes } = require("./backend/routes/authRoutes");
 const { geocodeRoute } = require("./backend/routes/geocode");
 const { newsRoute } = require("./backend/routes/news");
+const { userLibraryRoute } = require("./backend/routes/userLibrary");
 
 require("dotenv").config();
 require("./backend/services/mongoConnect");
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use("/", authRoutes);
 app.use("/", geocodeRoute);
 app.use("/", newsRoute);
+app.use("/", userLibraryRoute);
 
 app.listen(PORT, () => {
     console.log("Server running");

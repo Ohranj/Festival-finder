@@ -6,6 +6,7 @@ class RenderNews extends React.Component {
     state = {
         articlePageToRender: 0,
     };
+
     render() {
         if (!this.props.countrySelected) {
             return null;
@@ -17,13 +18,17 @@ class RenderNews extends React.Component {
                 </div>
             );
         }
+
         return (
             <div className="ui items articleParentContainer">
                 {this.props.articles[this.state.articlePageToRender].map(
                     (article, index) => {
                         return (
                             <div key={index} className="item articleContainer">
-                                <AddToLibrary article={article} />
+                                <AddToLibrary
+                                    article={article}
+                                    itemNo={index}
+                                />
                                 <div className="ui small image">
                                     <a
                                         href={article.url}

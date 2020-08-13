@@ -12,3 +12,9 @@ export const storeUser = ({
         name,
     };
 };
+
+export const viewLibrary = () => {
+    return {
+        type: "VIEW_LIBRARY",
+    };
+};

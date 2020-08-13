@@ -7,11 +7,20 @@ const userSchema = new Schema({
     googleProfileImg: String,
     googleEmail: String,
     name: String,
-    festivals: [],
+    articles: [],
+});
+
+const articleSchema = new Schema({
+    articleTitle: String,
+    articleDesc: String,
+    articleImg: String,
+    articleUrl: String,
 });
 
 const User = mongoose.model("users", userSchema);
+const Article = mongoose.model("article", articleSchema);
 
 module.exports = {
     userModel: User,
+    articleModel: Article,
 };

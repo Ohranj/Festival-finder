@@ -26,4 +26,14 @@ module.exports = function (app) {
             target: "http://localhost:8080",
         })
     );
+    app.use(
+        proxy("/addarticle", {
+            target: "http://localhost:8080",
+        })
+    );
+    app.use(
+        proxy("/articles", {
+            target: "http://localhost:8080",
+        })
+    );
 };
