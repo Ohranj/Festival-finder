@@ -27,12 +27,17 @@ module.exports = function (app) {
         })
     );
     app.use(
-        proxy("/addarticle", {
+        proxy("/addtopic", {
             target: "http://localhost:8080",
         })
     );
     app.use(
-        proxy("/articles", {
+        proxy("/topics", {
+            target: "http://localhost:8080",
+        })
+    );
+    app.use(
+        proxy("/deletetopic", {
             target: "http://localhost:8080",
         })
     );

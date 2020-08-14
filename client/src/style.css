@@ -119,3 +119,8 @@ body {
     right: 10px;
     cursor: pointer;
 }
+.topicContainer {
+    height: 10vh;
+    display: flex !important;
+    align-items: center !important;
+}
