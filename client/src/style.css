@@ -14,6 +14,7 @@ body {
     align-items: center;
     padding: 0 10vw !important;
     width: 100%;
+    margin-bottom: 0 !important;
 }
 .header > .menu {
     display: flex;
@@ -140,4 +141,40 @@ body {
     display: block !important;
     background-color: #f2711c !important;
     color: #ffffff !important;
+}
+.topicRow {
+    height: 10vh;
+    margin-bottom: 15px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.topicRow > div > .field {
+    margin-left: 30px !important;
+}
+.topicRow > div > .field > label {
+    margin-right: 5px !important;
+}
+.fetchArticleRow {
+    display: flex;
+    flex-direction: row;
+}
+.topicResultsContainer {
+    min-height: 75vh;
+    margin: 10px 0 !important;
+}
+.topicResultsContainer > div {
+    min-height: 100%;
+}
+.topicArticleHeader {
+    padding: 0 !important;
+}
+.topicNewsCard {
+    height: 650px;
+    border: 1px solid black;
+    padding: 10px 5px;
+}
+.topicNewsCard > div > img {
+    max-width: 100%;
+    max-height: 100%;
 }

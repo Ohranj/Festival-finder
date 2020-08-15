@@ -27,6 +27,11 @@ module.exports = function (app) {
         })
     );
     app.use(
+        proxy("/news/", {
+            target: "http://localhost:8080",
+        })
+    );
+    app.use(
         proxy("/addtopic", {
             target: "http://localhost:8080",
         })

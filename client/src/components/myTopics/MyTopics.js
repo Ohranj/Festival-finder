@@ -1,5 +1,8 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
+
+import LoggedIn from "./LoggedIn";
 
 import { connect } from "react-redux";
 import { storeUser } from "../../actions/index";
@@ -25,9 +28,9 @@ class MyTopics extends React.Component {
         if (this.state.isAuthenticating) {
             return null;
         } else if (!this.props.user.userID) {
-            return <div>Not logged in</div>;
+            return <Redirect to="/profile" />;
         } else {
-            return <div>Logged in</div>;
+            return <LoggedIn />;
         }
     }
 }

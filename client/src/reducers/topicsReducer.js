@@ -3,7 +3,8 @@ export default (state = [], action) => {
         case "VIEW_TOPICS":
             return state;
         case "GET_TOPICS_FROM_DATABASE":
-            return state.concat(action.topics);
+            state = action.topics;
+            return state;
         case "ADD_TOPIC":
             if (state.length < 10) {
                 return state.includes(action.topic)
