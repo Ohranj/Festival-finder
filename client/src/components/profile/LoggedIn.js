@@ -8,9 +8,25 @@ import { connect } from "react-redux";
 import { getTopicsFromDatabase, deleteTopic } from "../../actions/index";
 
 class LoggedIn extends React.Component {
+    state = {
+        topicAdded: false,
+    };
+
     componentDidMount() {
         this.props.getTopicsFromDatabase();
     }
+
+    newTopicAdded = () => {
+        this.setState({
+            topicAdded: true,
+        });
+    };
+
+    resetTopicAdded = () => {
+        this.setState({
+            topicAdded: false,
+        });
+    };
 
     deleteSelectedTopic(topic) {
         this.props.deleteTopic(topic);
@@ -25,14 +41,7 @@ class LoggedIn extends React.Component {
 
     render() {
         return (
-            <div
-                className="ui grid"
-                style={{
-                    paddingTop: "50px",
-                    display: "flex",
-                    flexDirection: "column",
-                }}
-            >
+            <div className="ui grid loggedInContainer">
                 <div className="ten wide column centered">
                     Hey {this.props.user} welcome back...
                 </div>
@@ -40,17 +49,12 @@ class LoggedIn extends React.Component {
                     Here are the topics that interest you...you can add up to 10
                     :
                 </div>
-                <div className="ten wide column centered topicContainer">
+                <div className="eleven wide column centered topicContainer">
                     {this.props.topics.map((topic, index) => {
                         return (
                             <button
-                                className="ui button orange"
+                                className="ui button orange topicBtn"
                                 key={index}
-                                style={{
-                                    borderRadius: "20px",
-                                    margin: "0 5px",
-                                    width: "10%",
-                                }}
                                 onClick={() => this.deleteSelectedTopic(topic)}
                             >
                                 {topic}
@@ -59,13 +63,12 @@ class LoggedIn extends React.Component {
                     })}
                 </div>
                 <div>
-                    <AddTopic />
+                    <AddTopic newTopicAdded={this.newTopicAdded} />
                 </div>
-                <SaveTopic />
-                <div>
-                    Topic added popup - Here something that you might like -
-                    return full article
-                </div>
+                <SaveTopic
+                    topicAdded={this.state.topicAdded}
+                    resetTopicAddedBtn={this.resetTopicAdded}
+                />
             </div>
         );
     }

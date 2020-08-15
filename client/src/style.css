@@ -119,8 +119,25 @@ body {
     right: 10px;
     cursor: pointer;
 }
+.loggedInContainer {
+    padding-top: 50px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
 .topicContainer {
     height: 10vh;
     display: flex !important;
+    justify-content: center !important;
     align-items: center !important;
+}
+.button > .topicBtn {
+    margin: 0 5px;
+    width: 10%;
+}
+.saveTopicBtn {
+    width: 10vw;
+    margin: 0 auto !important;
+    display: block !important;
+    background-color: #f2711c !important;
+    color: #ffffff !important;
 }

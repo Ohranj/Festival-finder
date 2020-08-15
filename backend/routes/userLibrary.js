@@ -1,5 +1,8 @@
 const router = require("express").Router();
+const axios = require("axios");
 const { userModel } = require("../models/User");
+
+require("dotenv").config();
 
 const checkUserExists = (req, res, next) => {
     if (!req.user) {
@@ -21,7 +24,21 @@ router.post("/addtopic", checkUserExists, async (req, res) => {
         }
     }
     user.save();
-    res.status(201).send("topic stored");
+    const topicToSearch = req.body.topic[req.body.topic.length - 1];
+    const currentDate = new Date();
+    axios({
+        method: "get",
+        url: `https://newsapi.org/v2/everything?q=${topicToSearch}&from=${currentDate
+            .toISOString()
+            .substring(
+                0,
+                10
+            )}&to=${currentDate.toISOString()}&pageSize=${1}&language=en&apiKey=${
+            process.env.newsKey
+        }`,
+    }).then(({ data }) => {
+        res.status(201).send(data);
+    });
 });
 
 router.delete("/deletetopic", checkUserExists, async (req, res) => {
@@ -33,9 +50,9 @@ router.delete("/deletetopic", checkUserExists, async (req, res) => {
         })
         .exec((err, success) => {
             if (err) {
-                console.log(err);
+                return console.log(err);
             } else {
-                console.log(success);
+                res.status(201).send("successfully deleted");
             }
         });
 });

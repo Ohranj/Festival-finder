@@ -10,7 +10,11 @@ class AddTopic extends React.Component {
 
     addNewTopic = (e) => {
         e.preventDefault();
-        this.props.addTopic(this.state.topicName);
+        if (this.props.topics.length < 10) {
+            this.props.newTopicAdded();
+            return this.props.addTopic(this.state.topicName);
+        }
+        return alert("You have reached the maximum amount of topics");
     };
 
     render() {
@@ -19,7 +23,7 @@ class AddTopic extends React.Component {
                 <form onSubmit={(e) => this.addNewTopic(e)}>
                     <input
                         type="text"
-                        placeholder="Anthropolgy through to Zoology"
+                        placeholder="Add a topic..."
                         onChange={(e) =>
                             this.setState({ topicName: e.target.value })
                         }

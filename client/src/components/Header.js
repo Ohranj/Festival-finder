@@ -35,6 +35,11 @@ class Header extends React.Component {
                             <h2 className="headerName">News Finder</h2>
                         </Link>
                     </div>
+                    <div style={{ marginLeft: "40px" }}>
+                        <Link to="/mytopics">
+                            <h3 className="headerName">Search via my Topics</h3>
+                        </Link>
+                    </div>
                     <div className="rightHeader">
                         {this.props.user.userID
                             ? this.signOut()
