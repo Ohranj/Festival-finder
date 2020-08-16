@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const path = require("path");
 
 const { authRoutes } = require("./backend/routes/authRoutes");
 const { geocodeRoute } = require("./backend/routes/geocode");
@@ -35,6 +36,13 @@ app.use("/", authRoutes);
 app.use("/", geocodeRoute);
 app.use("/", newsRoute);
 app.use("/", userLibraryRoute);
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
 
 app.listen(PORT, () => {
     console.log("Server running");
